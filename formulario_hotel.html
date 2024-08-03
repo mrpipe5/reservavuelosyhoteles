@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Hotel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function validarHotel() {
+            const nombre = document.getElementById('nombre').value;
+            const ubicacion = document.getElementById('ubicacion').value;
+            const habitaciones = document.getElementById('habitaciones_disponibles').value;
+            const tarifa = document.getElementById('tarifa_noche').value;
+
+            if (nombre === '' || ubicacion === '' || habitaciones === '' || tarifa === '') {
+                alert('Todos los campos son obligatorios.');
+                return false;
+            }
+
+            if (isNaN(habitaciones) || isNaN(tarifa)) {
+                alert('Las habitaciones disponibles y la tarifa por noche deben ser números.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Agregar Hotel</h1>
+        <form action="procesar_hotel.php" method="post" onsubmit="return validarHotel()">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="ubicacion">Ubicación:</label>
+                <input type="text" id="ubicacion" name="ubicacion" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="habitaciones_disponibles">Habitaciones Disponibles:</label>
+                <input type="number" id="habitaciones_disponibles" name="habitaciones_disponibles" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="tarifa_noche">Tarifa por Noche:</label>
+                <input type="number" id="tarifa_noche" name="tarifa_noche" class="form-control" step="0.01">
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar Hotel</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
